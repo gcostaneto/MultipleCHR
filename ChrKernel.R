@@ -23,7 +23,7 @@ ChromossomeKernel = function(.genotypes=NULL,.hapmap=NULL,.MatrixMarker = NULL,.
   gyM    = list()
   for(i in 1:length(.chr)){
     gyM[[i]] = .M[,.markers %in% .hap$.snp[.hap$.chr %in% .chr[i]]]
-    cat(paste0('Chromossome: ',.chr[[i]],' size = ',ncol(gyM[[i]])),'\n')
+    cat(paste0('Chromossome: ',.chr[[i]],' size = ',nrow(gyM[[i]])),'x',ncol(gyM[[i]])),'\n')
   } 
   names(gyM) = .chr
   cat(paste0('-----------------------'),'\n')
