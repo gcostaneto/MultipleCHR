@@ -1,14 +1,21 @@
-chr.effect = function(model,gids){
+chr.effect = function(model,.gids){
   K = model$K
-  ngid = length(gids)
+  ngid = length(.gids)
   size = length(K)
   comps = data.frame(matrix(NA,ncol=size,nrow=ngid))
+  comps2 = data.frame(matrix(NA,ncol=size,nrow=ngid))
   
   for(i in 1:size) comps[,i] = K[[i]][[1]]
   names(comps) = names(K)
-  rownames(comps) = gids
-  return(comps)
+  rownames(comps) = .gids
+  
+  for(i in 1:size) comps2[,i] = K[[i]][[2]]
+  names(comps2) = paste0('sd_',names(K))
+  rownames(comps2) = .gids
+  
+  return(list(CHR = data.frame(comps),SD = data.frame(comps2)))
 }
+
 
 
 Vcomp.BGGE<-function(model,digits=4){
