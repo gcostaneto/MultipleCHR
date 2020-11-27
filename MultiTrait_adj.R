@@ -714,7 +714,8 @@ setResCov<-function(resCov,traits,error,Sy,R2,saveAt)
   
   message("Initializing resCov")
   
-  resCov$R<-0.01+var(error)/2
+  resCov$R<-0.001+var(error)/2
+  print(resCov)
   resCov$Rinv<-solve(resCov$R)
   
   if(is.null(resCov$type))
